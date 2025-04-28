@@ -113,6 +113,15 @@ fun ScreenUser(modifier: Modifier = Modifier) {
         Text(
             text = dataUser.value, fontSize = 20.sp
         )
+        Button(
+            onClick = {
+                coroutineScope.launch {
+                    EliminarUltimoUsuario(dao)
+                }
+            }
+        ) {
+            Text("Eliminar Último Usuario", fontSize = 16.sp)
+        }
     }
 }
 
@@ -146,4 +155,12 @@ suspend fun AgregarUsuario(user: User, dao:UserDao): Unit {
         Log.e("User","Error: insert: ${e.message}")
     }
     //}
+}
+
+suspend fun EliminarUltimoUsuario(dao: UserDao) {
+    try {
+        dao.deleteLastUser()
+    } catch (e: Exception) {
+        Log.e("User", "Error: delete: ${e.message}")
+    }
 }
