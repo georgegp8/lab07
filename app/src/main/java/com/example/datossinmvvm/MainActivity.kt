@@ -110,9 +110,6 @@ fun ScreenUser(modifier: Modifier = Modifier) {
         ) {
             Text("Listar Usuarios", fontSize=16.sp)
         }
-        Text(
-            text = dataUser.value, fontSize = 20.sp
-        )
         Button(
             onClick = {
                 coroutineScope.launch {
@@ -122,6 +119,9 @@ fun ScreenUser(modifier: Modifier = Modifier) {
         ) {
             Text("Eliminar Último Usuario", fontSize = 16.sp)
         }
+        Text(
+            text = dataUser.value, fontSize = 20.sp
+        )
     }
 }
 
